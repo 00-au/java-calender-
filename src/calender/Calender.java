@@ -22,6 +22,7 @@ public class Calender {
 
 	public static void main(String[] args) {
 
+		String PROMPT = "cal>";
 		Scanner scanner = new Scanner(System.in);
 		Calender cal = new Calender();
 		System.out.println("반복횟수를 입력하세요.");
