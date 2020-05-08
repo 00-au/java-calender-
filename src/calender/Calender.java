@@ -25,15 +25,19 @@ public class Calender {
 		String PROMPT = "cal>";
 		Scanner scanner = new Scanner(System.in);
 		Calender cal = new Calender();
-		System.out.println("반복횟수를 입력하세요.");
-		int repeat = scanner.nextInt();
-
-		for (int i = 0; i < repeat; i++) {
-
+		int month = 1;
+		while (true) {
 			System.out.println("달을 입력하세요");
-			int month = scanner.nextInt();
+			System.out.print(PROMPT);
+			month = scanner.nextInt();
+			if (month == -1) {
+				break;
+			}
+			if (month > 12) {
+				continue; //루프의 처음으로 
+			}
 			System.out.printf("%d 월은 %d 일까지 있습니다.\n", month, cal.maxDaysOfMonth(month));
-
+			
 		}
 		System.out.println("Bye");
 
