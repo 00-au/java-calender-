@@ -61,7 +61,7 @@ public class Calender {
 private int getweekDay(int year, int month, int day) {
 		int syear = 1970;
 
-		final int standardweekday = 3; //1970/jan/1st/thursday
+		final int standardweekday = 4; //1970/jan/1st/thursday
 		
 		int count = 0;
 		
@@ -75,7 +75,7 @@ private int getweekDay(int year, int month, int day) {
 			int delta = maxDaysOfMonth(year, i);
 			count += delta;
 		}
-		count += day;
+		count += day-1;
 		//System.out.println(count);
 		int weekday = (count + standardweekday) % 7; 
 		return weekday;

@@ -1,8 +1,39 @@
 package calender;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class prompt {
+	
+	public void printMenu() {
+
+		
+		Scanner s = new Scanner(System.in);
+		Calender c = new Calender();
+		int month = 5;
+		int year = 2020;
+		System.out.println("");
+		c.printCalender(year, month);
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy년 MM월dd일");
+		Date time = new Date();
+		String time1 = format.format(time);
+		System.out.println("\n\n오늘은 " +time1+" 입니다.");
+
+	System.out.println("\n*--*--*--*--*--*--*-"); 
+	System.out.println("| 1. 일 정 등 록            |");
+	System.out.println("| 2. 일 정 검 색            |");
+	System.out.println("| 3. 일 정 삭 제            |");
+	System.out.println("| 3. 일 정 수 정            |");
+	System.out.println("| 4. h 도움말   e 종료   |");
+	System.out.println("*--*--*--*--*--*--*- ");
+	
+	}
+	
+	
+	
+	
+	
 	/**
 	 * 
 	 * @param week 요일 명
@@ -23,35 +54,52 @@ public class prompt {
 	}
 	
 	public void runPrompt() {
+		printMenu();
 		Scanner scanner = new Scanner(System.in);
-		Calender cal = new Calender();
-		int month = 1;
-		int year = 2017;
-		int weekday = 0;
 		
-		while (true) {
-			System.out.println("\n년도를 입력하세요 (exit: -1)");
-			System.out.print("YEAR> ");
-			year = scanner.nextInt();
-			if (year == -1) {
-				break;
-			}
-			System.out.println("달을 입력하세요");
-			System.out.print("MONTH> ");
-			month = scanner.nextInt();
-			if (month > 12 || month < 1) {
-				System.out.println("잘못된 입력 값입니다.");
-				continue; //루프의 처음으로 
-			}
-			
+		Calender cal = new Calender();
 
-			cal.printCalender(year, month);
-			
+		while (true) {
+			String cmd = scanner.next();
+			//스위치는 문자열 불가라서 if로 해줌.
+			 if(cmd.equals("1")) { cmd_register(); }
+			 else if(cmd.equals("2")) { cmdSearch(); }
+			 else if(cmd.equals("3")) { /*cmdCal(scanner, cal);*/ }
+			 else if(cmd.equals("h")) { printMenu(); }
+			 else if(cmd.equals("q")) { break;}
+			 		
+	
 		}
-		System.out.println("Bye");
+		System.out.println("Good Bye."); 
 		scanner.close();
 
 	}
+
+
+
+
+
+
+
+
+	private void cmdSearch() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+	private void cmd_register() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
 	public static void main(String[] args) {
 		//셀 실행
 		prompt p = new prompt();
