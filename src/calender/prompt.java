@@ -44,13 +44,8 @@ public class prompt {
 				continue; //루프의 처음으로 
 			}
 			
-			System.out.println("첫째 날의 요일을 입력하세요");
-			String str_weekday = scanner.next();
-			weekday = parseDay(str_weekday);
 
-
-			
-			cal.printCalender(year, month,weekday);
+			cal.printCalender(year, month);
 			
 		}
 		System.out.println("Bye");
