@@ -42,6 +42,8 @@ public class Calender {
 		return planMap.get(date); //등록된 값을 리턴해준다.
 	}
 	
+
+	
 	//윤년 계산
 	public boolean isLeapYear(int year) { //boolean으로 윤년이 맞으면 true, 아니라면 false를 해서 윤년을 맞춰준다.
 		if (year % 4 ==0 && (year % 100 != 0 || year % 400 == 0 )) { //4로 나누어떨어지고, 100으로 떨어지지 않지만 400으로는 떨어질 때)

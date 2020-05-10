@@ -33,12 +33,9 @@ public class prompt {
 				cmdSearch(scanner, cal);
 				break;
 			case "3":
-				
+				cmdcal(scanner,cal);
 				break;
-			case "4": 
-				
-				break;
-			case "5":
+			case "4":
 				isLoop = false;
 				break;
 			}
@@ -47,10 +44,80 @@ public class prompt {
 			scanner.close();
 	}
 	
-			
+
+
+
+	public int parseDay(String week) {
+
+		switch (week) {
+
+		case "일":
+
+			return 0;
+
+		case "월":
+
+			return 1;
+
+		case "화":
+
+			return 2;
+
+		case "수":
+
+			return 3;
+
+		case "목":
+
+			return 4;
+
+		case "금":
+
+			return 5;
+
+		case "토":
+
+			return 6;
+
+		default:
+
+			return 0;
+
+		}
+
+	}
+
+
+private void cmdcal(Scanner scanner, Calender cal) {
+	int month = 1;
+	int year = 2017;
+	int weekday = 0;
+	while (true) {
+		System.out.println("\n년도를 입력하세요 (exit: -1)");
+		System.out.print("YEAR> ");
+		year = scanner.nextInt();
+
+		if (year == -1) {
+			break;
+		}
+		System.out.println("달을 입력하세요");
+		System.out.print("MONTH> ");
+		month = scanner.nextInt();
+		if (month > 12 || month < 1) {
+
+			System.out.println("잘못된 입력 값입니다.");
+			continue; //루프의 처음으로 
+
+		}
+		cal.printCalender(year, month);
+	}
 	
-	
-	
+	}
+
+
+
+
+
 
 
 
@@ -134,9 +201,8 @@ public class prompt {
 		System.out.println("\n\n*--*--*--*--*--*--*-");
 		System.out.println("| 1. 일 정 등 록            |");
 		System.out.println("| 2. 일 정 검 색            |");
-		System.out.println("| 3. 일 정 삭 제            |");
-		System.out.println("| 4. 일 정 수 정            |");
-		System.out.println("| 5. 종  료                  |");
+		System.out.println("| 3. 달 력 보 기            |");
+		System.out.println("| 4. 종  료                  |");
 		System.out.println("*--*--*--*--*--*--*- ");
 		System.out.println("명령을 입력해 주세요 >");
 	}
