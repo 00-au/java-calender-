@@ -9,13 +9,19 @@ public class planitem {
 	public String detail;
 	public String peoples = "";
 	
-	public planitem(String date, String detail) {
+	public static Date getDatefromString(String strDate) {
+		Date date = null;
 		try {
-			planDate = new SimpleDateFormat("yyyy-MM-dd").parse(date);
+			date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
 		} catch (ParseException e) {
-			System.out.println("날짜를 잘못 입력하셨습니다.");
+		
 			e.printStackTrace();
 		}
+		return date;
+	}
+	
+	public planitem(String date, String detail) {
+		this.planDate = getDatefromString(date);
 		this.detail = detail;
 	}
 	

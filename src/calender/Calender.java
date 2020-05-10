@@ -10,26 +10,27 @@ public class Calender {
 	private final int[] maxDays = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final int[] LeapmaxDays = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	
-	private HashMap <Date, String> planMap; //검색기능 
+	private HashMap <Date, planitem> planMap; //검색기능 
 	
 	
 	//생성자
 	
 	public Calender() {
-		planMap = new HashMap<Date, String>(); //날짜로 플랜을 찾는 검색기능
+		planMap = new HashMap<Date, planitem>(); //날짜로 플랜을 찾는 검색기능
 	}
 	
 	
 	//예외 : 호출해주는 누군가에게 떠넘기겠다. 나 말고 호출하는 누군가가 처리
-	public void registerPlan(String strDate, String plan) throws ParseException {
+	public void registerPlan(String strDate, String plan) {
+		
 		planitem p = new planitem(strDate, plan);
-		planMap.put(p.getDate(), plan);
+		planMap.put(p.getDate(), p);
 		
 	}
 	
-	public String searchPlan(String strDate) throws ParseException {
-		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
-		String plan = planMap.get(date); //개선, 한 날짜에 하나밖에 못넣는다.
+	public planitem searchPlan(String strDate) {
+		Date date = planitem.getDatefromString(strDate);
+		 //개선, 한 날짜에 하나밖에 못넣는다.
 		return planMap.get(date);
 	}
 	
