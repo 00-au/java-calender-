@@ -22,16 +22,15 @@ public class Calender {
 	
 	//예외 : 호출해주는 누군가에게 떠넘기겠다. 나 말고 호출하는 누군가가 처리
 	public void registerPlan(String strDate, String plan) throws ParseException {
-		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
-		//System.out.println(date);
-		planMap.put(date, plan);
+		planitem p = new planitem(strDate, plan);
+		planMap.put(p.getDate(), plan);
 		
 	}
 	
 	public String searchPlan(String strDate) throws ParseException {
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
-		String plan = planMap.get(date);
-		return plan;
+		String plan = planMap.get(date); //개선, 한 날짜에 하나밖에 못넣는다.
+		return planMap.get(date);
 	}
 	
 	public boolean isLeapYear(int year) {

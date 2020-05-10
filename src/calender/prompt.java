@@ -90,13 +90,6 @@ public class prompt {
 				isLoop = false;
 				break;
 			}
-			if(cmd.equals("1")) { cmd_register(scanner, cal); }
-			else if(cmd.equals("2")) { cmdSearch(scanner, cal); }
-			else if(cmd.equals("3")) { /*cmdCal(scanner, cal);*/ }
-			else if(cmd.equals("h")) { printMenu(); }
-			else if(cmd.equals("q")) { break;}
-
-
 		}
 		System.out.println("Good Bye."); 
 		scanner.close();
