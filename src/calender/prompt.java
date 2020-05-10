@@ -69,10 +69,27 @@ public class prompt {
 		Scanner scanner = new Scanner(System.in);
 
 		Calender cal = new Calender();
-
-		while (true) {
+		boolean isLoop = true;
+		while (isLoop) {
 			String cmd = scanner.next();
-			//스위치는 문자열 불가라서 if로 해줌.
+			
+		
+			switch(cmd) {
+			case "1" :
+				cmd_register(scanner, cal);
+				break;
+			case "2" :
+				cmdSearch(scanner, cal);
+				break;
+			case "3" :
+				break;
+			case "h" :
+				printMenu();
+				break;
+			case "q" :
+				isLoop = false;
+				break;
+			}
 			if(cmd.equals("1")) { cmd_register(scanner, cal); }
 			else if(cmd.equals("2")) { cmdSearch(scanner, cal); }
 			else if(cmd.equals("3")) { /*cmdCal(scanner, cal);*/ }
