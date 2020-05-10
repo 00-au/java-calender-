@@ -1,10 +1,38 @@
 package calender;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Calender {
 	private final int[] maxDays = { 0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 	private final int[] LeapmaxDays = { 0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	
+	private HashMap <Date, String> planMap; //검색기능 
+	
+	
+	//생성자
+	
+	public Calender() {
+		planMap = new HashMap<Date, String>(); //날짜로 플랜을 찾는 검색기능
+	}
+	
+	
+	//예외 : 호출해주는 누군가에게 떠넘기겠다. 나 말고 호출하는 누군가가 처리
+	public void registerPlan(String strDate, String plan) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+		//System.out.println(date);
+		planMap.put(date, plan);
+		
+	}
+	
+	public String searchPlan(String strDate) throws ParseException {
+		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(strDate);
+		String plan = planMap.get(date);
+		return plan;
+	}
 	
 	public boolean isLeapYear(int year) {
 		if (year % 4 ==0 && (year % 100 != 0 || year % 400 == 0)) {
@@ -82,13 +110,16 @@ private int getweekDay(int year, int month, int day) {
 	
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 		Calender c = new Calender();
-		System.out.println(	c.getweekDay(1970, 1, 1) == 3);
-		System.out.println(	c.getweekDay(1971, 1, 1) == 4);
-		System.out.println(	c.getweekDay(1972, 1, 1) == 5);
-		System.out.println(	c.getweekDay(1973, 1, 1) == 0);
-		System.out.println(	c.getweekDay(1974, 1, 1) == 1);
+		System.out.println(	c.getweekDay(1970, 1, 1) == 4);
+		System.out.println(	c.getweekDay(1971, 1, 1) == 5);
+		System.out.println(	c.getweekDay(1972, 1, 1) == 6);
+		System.out.println(	c.getweekDay(1973, 1, 1) == 1);
+		System.out.println(	c.getweekDay(1974, 1, 1) == 2);
+		
+		c.registerPlan("2020-05-10", "냉동 삼겹살 먹는 날");
+		System.out.println(c.searchPlan("2020-05-10").equals("냉동 삼겹살 먹는 날"));
 	}
 //		System.out.println(" 1  2  3  4  5  6  7 ");
 //		System.out.println(" 8  9  10 11 12 13 14 ");
@@ -100,7 +131,7 @@ private int getweekDay(int year, int month, int day) {
 
 
 		Scanner scanner = new Scanner(System.in);
-		Calender cal = new Calender();
+		Calender c = new Calender();
 		int month = 1;
 		while (true) {
 			
